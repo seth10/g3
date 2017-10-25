@@ -2,19 +2,17 @@
 
 #from Coin import Coin
 # we don't know the name of the classes in advance, so we can't use this
-# instead,
-#Coin = __import__("Coin", globals(), locals(), ["Coin"], -1).Coin
 
-import os
+import os, importlib
 
 plugin = {}
 
 for fileName in os.listdir(os.path.dirname(os.path.realpath(__file__))):
     print fileName
     if fileName.endswith('.py') and fileName != __file__:
-        p = fileName[:fileName.index('.')]
+        p = fileName.rsplit('.')[0]
         print '└─importing ' + p
-        exec('plugin[p] = __import__(p, globals(), locals(), [p], -1).'+p)
+        plugin[p] = getattr(importlib.import_module(p), p)
 print '\nDone importing!\n'
 
 coin = plugin['Coin'](1)

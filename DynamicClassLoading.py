@@ -9,7 +9,7 @@ plugin = {}
 
 for fileName in os.listdir(os.path.dirname(os.path.realpath(__file__))):
     print fileName
-    if fileName.endswith('.py') and fileName != __file__:
+    if fileName.endswith('.py') and fileName != os.path.basename(__file__):
         p = fileName.rsplit('.')[0]
         print '└─importing ' + p
         plugin[p] = getattr(importlib.import_module(p), p)

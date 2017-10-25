@@ -21,7 +21,7 @@ from os.path import isfile, join
 
 plugin = dict()
 
-path = "C:\Users\hcps-tenembasj\Documents\Dynamic Class Loading"
+path = '/Users/setht/Desktop/Development/g3'
 for file in listdir(path):
     print file
     #neither __file__ nor sys.argv[0] work so hardcoding it 4naw
